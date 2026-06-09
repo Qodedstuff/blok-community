@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BLOK Capital — Community Engagement Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --ink:#1a1f1a; --paper:#f5f2ea; --moss:#2d5a27; --moss-lt:#d8f3dc;
+  --clay:#8b7355; --muted:#6b7280; --border:rgba(45,90,39,0.15);
+  --amber:#f59e0b; --dark:#111711;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#e8e4da;
+  color:var(--ink);
+}
+
+/* COVER */
+.cover{
+  background:var(--dark);
+  padding:64px 24px 56px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cover::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(45,90,39,0.4) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cover-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:14px;color:rgba(255,255,255,0.35);
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.cover-logo span{color:rgba(45,90,39,0.9);}
+.cover h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(30px,6vw,52px);
+  line-height:1.1;color:#fff;margin-bottom:16px;
+}
+.cover h1 em{color:#6db870;font-style:italic;}
+.cover-sub{
+  font-size:15px;color:rgba(255,255,255,0.5);
+  max-width:520px;margin:0 auto 32px;line-height:1.7;
+}
+.cover-meta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:999px;padding:8px 20px;
+  font-size:13px;color:rgba(255,255,255,0.5);
+}
+.cover-meta strong{color:#fff;}
+
+/* CONTENT */
+.content{max-width:820px;margin:0 auto;padding:40px 24px 80px;}
+
+/* SECTION */
+.section{
+  background:var(--paper);border-radius:20px;
+  overflow:hidden;margin-bottom:32px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+}
+.section-header{
+  display:flex;align-items:center;gap:14px;
+  padding:20px 28px;
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.section-icon{font-size:24px;flex-shrink:0;}
+.section-title{font-weight:700;font-size:17px;flex:1;}
+.section-tag{
+  font-size:10px;font-weight:700;
+  padding:3px 10px;border-radius:999px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  background:var(--moss-lt);color:var(--moss);
+}
+.section-body{padding:28px;}
+
+/* SIMPLE EXPLAIN */
+.explain{
+  background:linear-gradient(135deg,rgba(45,90,39,0.06),rgba(45,90,39,0.02));
+  border:1px solid rgba(45,90,39,0.12);
+  border-radius:12px;padding:16px 20px;
+  display:flex;gap:12px;align-items:flex-start;
+  margin-bottom:24px;
+}
+.explain-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
+.explain-text{font-size:14px;line-height:1.7;color:var(--ink);}
+.explain-text strong{color:var(--moss);}
+
+/* MEMBER NAME */
+.name-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-bottom:16px;
+}
+.name-card{
+  border-radius:12px;padding:16px;text-align:center;
+  border:2px solid;cursor:default;
+  transition:all .2s;
+}
+.name-card.winner{
+  border-color:var(--moss);
+  background:var(--moss-lt);
+}
+.name-card.other{
+  border-color:var(--border);
+  background:#fff;
+}
+.name-val{
+  font-family:'DM Serif Display',serif;
+  font-size:20px;margin-bottom:6px;
+}
+.name-card.winner .name-val{color:var(--moss);}
+.name-card.other .name-val{color:var(--ink);}
+.name-desc{font-size:11px;color:var(--muted);line-height:1.4;}
+.winner-tag{
+  display:inline-block;
+  background:var(--moss);color:#fff;
+  font-size:9px;font-weight:700;
+  padding:2px 8px;border-radius:999px;
+  text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+/* SCHEDULE */
+.schedule{display:flex;flex-direction:column;gap:12px;}
+.sched-item{
+  display:grid;
+  grid-template-columns:80px 48px 1fr auto;
+  align-items:center;gap:16px;
+  background:#fff;border-radius:12px;
+  padding:16px 20px;
+  border:1px solid var(--border);
+}
+.sched-time{
+  font-size:13px;font-weight:700;color:var(--moss);
+}
+.sched-emoji{font-size:22px;text-align:center;}
+.sched-content{}
+.sched-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+.sched-desc{font-size:12px;color:var(--muted);line-height:1.4;}
+.sched-badge{
+  font-size:10px;font-weight:700;
+  padding:3px 8px;border-radius:6px;
+  text-transform:uppercase;white-space:nowrap;
+  flex-shrink:0;
+}
+.badge-auto{background:#e0f2fe;color:#0369a1;}
+.badge-community{background:var(--moss-lt);color:var(--moss);}
+.badge-fun{background:#fef3c7;color:#92400e;}
+
+/* TV ANALOGY */
+.tv-box{
+  background:var(--dark);border-radius:16px;
+  padding:24px;color:#fff;margin-bottom:24px;
+}
+.tv-title{
+  font-family:'DM Serif Display',serif;
+  font-size:18px;color:#fff;margin-bottom:6px;
+}
+.tv-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;}
+.tv-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.tv-slot{
+  background:rgba(255,255,255,0.07);
+  border-radius:10px;padding:12px;text-align:center;
+}
+.tv-time{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.tv-show{font-size:12px;font-weight:600;color:#fff;line-height:1.3;}
+
+/* BOT COMMANDS */
+.commands{display:flex;flex-direction:column;gap:8px;}
+.cmd-row{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#fff;border-radius:10px;
+  padding:14px 16px;border:1px solid var(--border);
+}
+.cmd-name{
+  font-family:monospace;font-size:13px;
+  font-weight:700;color:var(--moss);
+  min-width:140px;flex-shrink:0;
+}
+.cmd-desc{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* DISCORD PREVIEW */
+.discord-preview{
+  background:#313338;border-radius:16px;
+  padding:20px;color:#fff;
+}
+.discord-channel{
+  font-size:12px;color:rgba(255,255,255,0.4);
+  margin-bottom:16px;font-weight:600;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.discord-msg{
+  display:flex;gap:12px;margin-bottom:16px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.discord-msg:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.msg-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.msg-content{}
+.msg-header{
+  display:flex;align-items:center;gap:8px;margin-bottom:4px;
+}
+.msg-name{font-size:13px;font-weight:700;}
+.msg-name.bot{color:#5865f2;}
+.msg-name.member{color:#3ba55c;}
+.msg-name.qoded{color:#f59e0b;}
+.msg-time{font-size:11px;color:rgba(255,255,255,0.3);}
+.msg-text{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;}
+.msg-embed{
+  background:rgba(255,255,255,0.05);
+  border-left:3px solid var(--moss);
+  border-radius:0 8px 8px 0;
+  padding:10px 12px;margin-top:8px;
+  font-size:12px;color:rgba(255,255,255,0.6);
+  line-height:1.6;
+}
+
+/* WHY THIS WORKS */
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.why-card{
+  background:#fff;border-radius:12px;
+  padding:20px;border:1px solid var(--border);
+  text-align:center;
+}
+.why-icon{font-size:28px;margin-bottom:12px;}
+.why-title{font-size:14px;font-weight:700;margin-bottom:6px;}
+.why-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* CLOSING */
+.closing{
+  background:var(--moss);border-radius:20px;
+  padding:36px 28px;color:#fff;text-align:center;
+}
+.closing h2{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;color:#fff;margin-bottom:12px;
+}
+.closing p{
+  font-size:14px;color:rgba(255,255,255,0.7);
+  max-width:480px;margin:0 auto 28px;line-height:1.7;
+}
+.closing-name{
+  font-size:14px;color:rgba(255,255,255,0.5);
+}
+.closing-name strong{color:#fff;}
+
+/* FOOTER */
+.footer{
+  text-align:center;font-size:12px;
+  color:var(--muted);padding:20px 0 40px;
+}
+
+@media(max-width:600px){
+  .name-grid{grid-template-columns:1fr 1fr;}
+  .sched-item{grid-template-columns:60px 36px 1fr;gap:10px;}
+  .sched-badge{display:none;}
+  .tv-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">BLOK <span>Capital</span></div>
+  <h1>Grow the Community.<br/><em>Reward the Bloktenders.</em></h1>
+  <p class="cover-sub">
+    A community engagement proposal for the BLOK Capital Discord server — covering member naming, hourly activities, a points reward system, leaderboard, and a monthly ambassador program powered by $BLOKC.
+  </p>
+  <div class="cover-meta">
+    Proposed by <strong>&nbsp;Qoded</strong>&nbsp;·&nbsp;
+    June 2026&nbsp;·&nbsp;
+    <strong>Community &amp; DevRel</strong>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- MEMBER NAME -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🏷️</div>
+    <div class="section-title">What Should We Call Our Members?</div>
+    <span class="section-tag">Identity</span>
+  </div>
+  <div class="section-body">
+
+    <div class="explain">
+      <div class="explain-icon">💡</div>
+      <div class="explain-text">
+        <strong>Why this matters:</strong> Every great community has a name for its members. Twitter has "tweeps." Ethereum has "ETH maxis." A name makes members feel they belong to something bigger than just a Discord server. It becomes their identity.
+      </div>
+    </div>
+
+    <div class="name-grid">
+      <div class="name-card winner">
+        <div class="winner-tag">⭐ Recommended</div>
+        <div class="name-val">Bloktenders</div>
+        <div class="name-desc">Tending a garden is exactly what members do with their crypto. Unique, on-brand, and memorable.</div>
+      </div>
+      <div class="name-card other">
+        <div class="name-val">Blokers</div>
+        <div class="name-desc">Simple and natural. Rolls off the tongue easily in daily greetings like "gm Blokers."</div>
+      </div>
+      <div class="name-card other">
+        <div class="name-val">Bloksowers</div>
+        <div class="name-desc">Sowers plant seeds — poetic, unique, and fits the garden metaphor perfectly.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- THE IDEA -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">📺</div>
+    <div class="section-title">The Big Idea — Run the Server Like a TV Station</div>
+    <span class="section-tag">Strategy</span>
+  </div>
+  <div class="section-body">
+
+    <div class="explain">
+      <div class="explain-icon">🎬</div>
+      <div class="explain-text">
+        <strong>Think of it like this:</strong> A TV station doesn't show just one programme all day. It has a schedule — morning show, afternoon news, evening entertainment, late night talk show. Each one attracts a different audience at a different time. That's exactly what we do for the Discord server. Different activities at different hours keep members from different timezones engaged all day long.
+      </div>
+    </div>
+
+    <div class="tv-box">
+      <div class="tv-title">🌍 The BLOK Capital Daily Schedule</div>
+      <div class="tv-sub">Something happening every few hours — across every timezone</div>
+      <div class="tv-grid">
+        <div class="tv-slot">
+          <div class="tv-time">6:00 AM</div>
+          <div class="tv-show">🌱 Daily Harvest</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">9:00 AM</div>
+          <div class="tv-show">📊 Garden Watch</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">12:00 PM</div>
+          <div class="tv-show">🏆 Top Gardener Board</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">3:00 PM</div>
+          <div class="tv-show">🌡️ Soil Report</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">6:00 PM</div>
+          <div class="tv-show">💧 Watering Time</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">9:00 PM</div>
+          <div class="tv-show">📊 Garden Watch</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">12:00 AM</div>
+          <div class="tv-show">🌙 Night Watch</div>
+        </div>
+        <div class="tv-slot">
+          <div class="tv-time">Every Hour</div>
+          <div class="tv-show">🌡️ Soil Report Bot</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCHEDULE DETAIL -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🗓️</div>
+    <div class="section-title">Each Activity Explained Simply</div>
+    <span class="section-tag">Details</span>
+  </div>
+  <div class="section-body">
+
+    <div class="schedule">
+      <div class="sched-item">
+        <div class="sched-time">6:00 AM</div>
+        <div class="sched-emoji">🌱</div>
+        <div class="sched-content">
+          <div class="sched-name">Daily Harvest</div>
+          <div class="sched-desc">One member posts the morning yield update. Others respond with what they're planting today. Sets the energy for the whole day.</div>
+        </div>
+        <span class="sched-badge badge-community">Community</span>
+      </div>
+
+      <div class="sched-item">
+        <div class="sched-time">9:00 AM</div>
+        <div class="sched-emoji">📊</div>
+        <div class="sched-content">
+          <div class="sched-name">Garden Watch</div>
+          <div class="sched-desc">Members share which Gardener they're following and why. Creates organic word of mouth and social proof for the protocol.</div>
+        </div>
+        <span class="sched-badge badge-community">Community</span>
+      </div>
+
+      <div class="sched-item">
+        <div class="sched-time">12:00 PM</div>
+        <div class="sched-emoji">🏆</div>
+        <div class="sched-content">
+          <div class="sched-name">Top Gardener Board</div>
+          <div class="sched-desc">Live leaderboard of best performing Gardeners. Members debate picks, share strategies, and discover new Gardeners to follow.</div>
+        </div>
+        <span class="sched-badge badge-auto">Auto Bot</span>
+      </div>
+
+      <div class="sched-item">
+        <div class="sched-time">Every Hour</div>
+        <div class="sched-emoji">🌡️</div>
+        <div class="sched-content">
+          <div class="sched-name">Soil Report</div>
+          <div class="sched-desc">Bot posts live Arbitrum gas fees and BLOK protocol TVL every hour. Members react with 🌱 if planting or 👀 if watching. Zero effort from the team.</div>
+        </div>
+        <span class="sched-badge badge-auto">Auto Bot</span>
+      </div>
+
+      <div class="sched-item">
+        <div class="sched-time">6:00 PM</div>
+        <div class="sched-emoji">💧</div>
+        <div class="sched-content">
+          <div class="sched-name">Watering Time</div>
+          <div class="sched-desc">Reminder for members to check their garden performance. Simple nudge that brings people back to the app and the server.</div>
+        </div>
+        <span class="sched-badge badge-auto">Auto Bot</span>
+      </div>
+
+      <div class="sched-item">
+        <div class="sched-time">12:00 AM</div>
+        <div class="sched-emoji">🌙</div>
+        <div class="sched-content">
+          <div class="sched-name">Night Watch</div>
+          <div class="sched-desc">For the late night crew and international members checking overnight yield. Keeps the server active across all timezones — Asia, Africa, Europe.</div>
+        </div>
+        <span class="sched-badge badge-community">Community</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DISCORD PREVIEW -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">💬</div>
+    <div class="section-title">What It Looks Like in the Server</div>
+    <span class="section-tag">Preview</span>
+  </div>
+  <div class="section-body">
+
+    <div class="discord-preview">
+      <div class="discord-channel"># 🌱・soil-report</div>
+
+      <div class="discord-msg">
+        <div class="msg-avatar" style="background:#5865f2;">🤖</div>
+        <div class="msg-content">
+          <div class="msg-header">
+            <span class="msg-name bot">BLOK Bot</span>
+            <span class="msg-time">Today at 3:00 PM</span>
+          </div>
+          <div class="msg-text">🌡️ <strong>Soil Report — 3:00 PM</strong></div>
+          <div class="msg-embed">
+            🌿 Protocol TVL: $4.22M (+2.1% today)<br/>
+            ⛽ Arbitrum Gas: 0.01 Gwei — great time to plant<br/>
+            🏆 Top Gardener: 0xMoss.eth — +18.4% this season<br/>
+            <br/>
+            React 🌱 if you're planting today · 👀 if you're watching
+          </div>
+        </div>
+      </div>
+
+      <div class="discord-msg">
+        <div class="msg-avatar" style="background:#3ba55c;">🧑</div>
+        <div class="msg-content">
+          <div class="msg-header">
+            <span class="msg-name member">0xDave.eth</span>
+            <span class="msg-time">Today at 3:02 PM</span>
+          </div>
+          <div class="msg-text">🌱 just planted another 50 USDC into The Evergreen garden. gas is cheap today!</div>
+        </div>
+      </div>
+
+      <div class="discord-msg">
+        <div class="msg-avatar" style="background:#f59e0b;">Q</div>
+        <div class="msg-content">
+          <div class="msg-header">
+            <span class="msg-name qoded">Qoded</span>
+            <span class="msg-time">Today at 3:04 PM</span>
+          </div>
+          <div class="msg-text">👀 watching for now — waiting for the Q3 mainnet launch before I go big 🌙</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- POINTS SYSTEM -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🪙</div>
+    <div class="section-title">The Points System — Every Action Earns $BLOKC Seeds</div>
+    <span class="section-tag">Rewards</span>
+  </div>
+  <div class="section-body">
+
+    <div class="explain">
+      <div class="explain-icon">🌱</div>
+      <div class="explain-text">
+        <strong>Think of it like this:</strong> Every time a member does something in the server — reacting to a Soil Report, sharing a Garden Watch, joining the Night Watch — they earn points called <strong>Seeds</strong>. At the end of each month, Seeds are converted to real $BLOKC tokens. The more active you are, the more you earn. It turns participation into real value.
+      </div>
+    </div>
+
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+      <thead>
+        <tr style="background:var(--moss);color:#fff;">
+          <th style="padding:12px 16px;text-align:left;font-size:13px;border-radius:8px 0 0 0;">Activity</th>
+          <th style="padding:12px 16px;text-align:left;font-size:13px;">When</th>
+          <th style="padding:12px 16px;text-align:center;font-size:13px;border-radius:0 8px 0 0;">🌱 Seeds Earned</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">React to Soil Report</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Every hour</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+1 🌱</td>
+        </tr>
+        <tr style="background:#f9f9f7;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">Post in Garden Watch</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Daily</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+5 🌱</td>
+        </tr>
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">Share Daily Harvest</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Every morning</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+10 🌱</td>
+        </tr>
+        <tr style="background:#f9f9f7;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">Active in Night Watch</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Midnight</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+8 🌱</td>
+        </tr>
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">Refer a new member</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Any time</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+50 🌱</td>
+        </tr>
+        <tr style="background:#f9f9f7;border-bottom:1px solid var(--border);">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">Plant in the protocol</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">On-chain action</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:var(--moss);">+100 🌱</td>
+        </tr>
+        <tr style="background:#fff;">
+          <td style="padding:12px 16px;font-size:13px;font-weight:600;">7-day activity streak</td>
+          <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Weekly bonus</td>
+          <td style="padding:12px 16px;text-align:center;font-size:14px;font-weight:700;color:#f59e0b;">+200 🌱 BONUS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background:rgba(45,90,39,0.07);border:1px solid rgba(45,90,39,0.15);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="font-size:20px;">💱</div>
+      <div style="font-size:14px;line-height:1.7;">
+        <strong style="color:var(--moss);">Seeds → $BLOKC Conversion:</strong> At the end of each month, the team sets a conversion rate (example: 1000 Seeds = 10 $BLOKC). Seeds are burned and $BLOKC is distributed to wallets. This creates a direct link between community activity and real token value.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🏆</div>
+    <div class="section-title">The Leaderboard — Who's the Top Bloktender?</div>
+    <span class="section-tag">Competition</span>
+  </div>
+  <div class="section-body">
+
+    <div class="explain">
+      <div class="explain-icon">🥇</div>
+      <div class="explain-text">
+        <strong>Think of it like this:</strong> A school noticeboard that shows the top students every week. Everyone wants to see their name up there. The leaderboard updates every hour automatically — showing who has earned the most Seeds today, this week, and this month. It creates friendly competition and gives people a reason to stay active.
+      </div>
+    </div>
+
+    <div style="background:#1a1f1a;border-radius:16px;padding:24px;color:#fff;margin-bottom:20px;">
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">🏆 Monthly Leaderboard — June 2026</div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(251,191,36,0.2),rgba(251,191,36,0.05));border:1px solid rgba(251,191,36,0.3);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:22px;">🥇</div>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:700;color:#fde68a;">0xMoss.eth</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">47 day streak · 12 referrals · 8 plantings</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:#fde68a;">4,820 🌱</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);">Seeds this month</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:22px;">🥈</div>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:700;color:#e2e8f0;">0xDave.eth</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">31 day streak · 7 referrals · 5 plantings</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:#e2e8f0;">3,210 🌱</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);">Seeds this month</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:22px;">🥉</div>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:700;color:#fed7aa;">0xSarah.eth</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">28 day streak · 5 referrals · 3 plantings</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:#fed7aa;">2,890 🌱</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);">Seeds this month</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:12px 16px;opacity:0.6;">
+          <div style="font-size:18px;">4.</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:600;color:#e2e8f0;">Qoded</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);">14 day streak · 2 referrals</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:16px;font-weight:700;color:#e2e8f0;">1,240 🌱</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px;color:rgba(255,255,255,0.35);">
+        🤖 Updated every hour automatically · Resets on the 1st of each month
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- AMBASSADOR PROGRAM -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🌟</div>
+    <div class="section-title">The Ambassador Program — Top 3 Every Month</div>
+    <span class="section-tag">Prestige</span>
+  </div>
+  <div class="section-body">
+
+    <div class="explain">
+      <div class="explain-icon">👑</div>
+      <div class="explain-text">
+        <strong>Think of it like this:</strong> Every month, the top 3 members on the leaderboard get crowned as BLOK Capital Ambassadors. It's like the school's top students getting a special badge, extra privileges, and recognition in front of everyone. This gives every member something to genuinely work toward — not just tokens, but status and identity within the community.
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
+      <div style="background:linear-gradient(135deg,#fef3c7,#fffbeb);border:2px solid #f59e0b;border-radius:16px;padding:20px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">🥇</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:6px;color:#92400e;">1st Place</div>
+        <div style="font-size:12px;color:#92400e;line-height:1.6;">
+          Ambassador badge<br/>
+          500 $BLOKC bonus<br/>
+          Featured on Twitter<br/>
+          Exclusive Discord role<br/>
+          Early access to features
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#f1f5f9,#fff);border:2px solid #94a3b8;border-radius:16px;padding:20px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">🥈</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:6px;color:#475569;">2nd Place</div>
+        <div style="font-size:12px;color:#475569;line-height:1.6;">
+          Ambassador badge<br/>
+          300 $BLOKC bonus<br/>
+          Featured on Twitter<br/>
+          Exclusive Discord role
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#fff7ed,#fff);border:2px solid #fb923c;border-radius:16px;padding:20px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">🥉</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:6px;color:#9a3412;">3rd Place</div>
+        <div style="font-size:12px;color:#9a3412;line-height:1.6;">
+          Ambassador badge<br/>
+          150 $BLOKC bonus<br/>
+          Featured on Twitter<br/>
+          Exclusive Discord role
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(45,90,39,0.07);border:1px solid rgba(45,90,39,0.15);border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.7;">
+      🌱 <strong style="color:var(--moss);">Why this works:</strong> Ambassadors become the most visible faces of the community. They promote BLOK Capital naturally because they've earned the status — it means something to them. Their followers see it. Their networks grow the protocol. It's the most organic form of marketing that costs the team almost nothing.
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY IT WORKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">✅</div>
+    <div class="section-title">Why This Works</div>
+    <span class="section-tag">Impact</span>
+  </div>
+  <div class="section-body">
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <div class="why-title">Low Effort for the Team</div>
+        <div class="why-desc">Most activities are automated by a bot. The team doesn't need to post manually every hour. It runs itself.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <div class="why-title">Works for Every Timezone</div>
+        <div class="why-desc">Members from Nigeria, USA, Europe, and Asia all have something to engage with at their local time.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <div class="why-title">Drives Protocol Usage</div>
+        <div class="why-desc">Every Watering Time reminder and Soil Report nudges members back to the app — increasing TVL organically.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌱</div>
+        <div class="why-title">Stays On Brand</div>
+        <div class="why-desc">Every activity uses garden language. Soil Report. Watering Time. Daily Harvest. It deepens the brand identity naturally.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Builds Real Community</div>
+        <div class="why-desc">Members start knowing each other, sharing strategies, and debating Gardener picks. That's how loyal communities form.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📣</div>
+        <div class="why-title">Creates Word of Mouth</div>
+        <div class="why-desc">When members share their Garden Watch picks, they bring their friends. Every post is free marketing for BLOK Capital.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2>A Garden Worth Growing. 🌱</h2>
+  <p>
+    This is just a suggestion from someone who believes in what BLOK Capital is building. The team knows their community best — these ideas are offered humbly as a starting point for discussion. Happy to elaborate on any part if it is useful.
+  </p>
+  <div class="closing-name">
+    Proposed by <strong>Qoded</strong> · Community &amp; DevRel Contributor · June 2026
+  </div>
+</div>
+
+<div class="footer">
+  github.com/qodedstuff · blokcapital.io · Built with 🌱 from Nigeria
+</div>
+
+</div>
+</body>
+</html>
